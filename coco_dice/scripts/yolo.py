@@ -81,23 +81,20 @@ def detect_poses(keypoints):
         poses.append("Tocando nariz con muneca derecha")
     
     if is_near(keypoints[LEFT_WRIST], keypoints[NOSE], thershold_touch_nose):
-        poses.append("Tocando nariz con mano izquierda")
+        poses.append("Tocando nariz con muneca izquierda")
     
-    # if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EYE]):
-    #     poses.append("Tocando ojo izquierdo con mano izquierda")
+    thershold_touch_eye = (keypoints[LEFT_EYE][0] - keypoints[RIGHT_EYE][0])//2
+    if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo izquierdo con muneca izquierda")
 
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EYE]):
-    #     poses.append("Tocando ojo izquierdo con mano derecha")
+    if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo izquierdo con muneca derecha")
     
-    # if ("Tocando ojo izquierdo con mano izquierda" in poses and 
-    #     "Tocando ojo izquierdo con mano derecha" in poses):
-    #     poses.append("Tocando ojo izquierdo con ambas manos")
-    
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EYE]):
-    #     poses.append("Tocando ojo derecho con mano derecha")
+    if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo derecho con muneca derecha")
 
-    # if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EYE]):
-    #     poses.append("Tocando ojo derecho con mano izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo derecho con muneca izquierda")
 
     # if ("Tocando ojo derecho con mano derecha" in poses and 
     #     "Tocando ojo derecho con mano izquierda" in poses):
