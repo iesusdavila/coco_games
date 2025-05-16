@@ -71,12 +71,12 @@ def detect_poses(keypoints):
     if "Brazo derecho hacia delante" in poses and "Brazo izquierdo hacia delante" in poses:
         poses.append("Ambos brazos hacia delante")
     
-    # thershold = (keypoints[LEFT_SHOULDER][0] - keypoints[RIGHT_SHOULDER][0])//3
-    # if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
-    #     is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and
-    #     is_left_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], thershold) and 
-    #     is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold)):
-    #     poses.append("Símbolo X con los brazos")
+    thershold = (keypoints[LEFT_SHOULDER][0] - keypoints[RIGHT_SHOULDER][0])//3
+    if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
+        is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and
+        is_left_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], thershold) and 
+        is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold)):
+        poses.append("Símbolo X con los brazos")
     
     # if is_near(keypoints[RIGHT_WRIST], keypoints[NOSE]):
     #     poses.append("Tocando nariz con mano derecha")
