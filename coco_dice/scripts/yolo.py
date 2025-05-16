@@ -2,9 +2,6 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 
-def calculate_distance(point1, point2):
-    return np.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
-
 def is_above(point1, point2, threshold=30):
     return point2[1] - point1[1] > threshold
 
@@ -24,7 +21,8 @@ def is_left_of(point1, point2, threshold=30):
     return point1[0] - point2[0] > threshold
 
 def is_near(point1, point2, threshold=50):
-    return calculate_distance(point1, point2) < threshold
+    distance = np.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
+    return distance < threshold
 
 NOSE = 0
 LEFT_EYE = 1
@@ -78,14 +76,12 @@ def detect_poses(keypoints):
         is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold)):
         poses.append("Símbolo X con los brazos")
     
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[NOSE]):
-    #     poses.append("Tocando nariz con mano derecha")
+    thershold_touch_nose = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
+    if is_near(keypoints[RIGHT_WRIST], keypoints[NOSE], thershold_touch_nose):
+        poses.append("Tocando nariz con muneca derecha")
     
-    # if is_near(keypoints[LEFT_WRIST], keypoints[NOSE]):
-    #     poses.append("Tocando nariz con mano izquierda")
-    
-    # if "Tocando nariz con mano derecha" in poses and "Tocando nariz con mano izquierda" in poses:
-    #     poses.append("Tocando nariz con ambas manos")
+    if is_near(keypoints[LEFT_WRIST], keypoints[NOSE], thershold_touch_nose):
+        poses.append("Tocando nariz con mano izquierda")
     
     # if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EYE]):
     #     poses.append("Tocando ojo izquierdo con mano izquierda")
