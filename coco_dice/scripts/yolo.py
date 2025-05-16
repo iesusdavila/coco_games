@@ -95,30 +95,27 @@ def detect_poses(keypoints):
 
     if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
         poses.append("Tocando ojo derecho con muneca izquierda")
-
-    # if ("Tocando ojo derecho con mano derecha" in poses and 
-    #     "Tocando ojo derecho con mano izquierda" in poses):
-    #     poses.append("Tocando ojo derecho con ambas manos")
     
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EAR]):
-    #     poses.append("Tocando oreja derecha con mano derecha")
+    thershold_touch_ear = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
+    if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja derecha con mano derecha")
 
-    # if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EAR]):
-    #     poses.append("Tocando oreja derecha con mano izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja derecha con mano izquierda")
 
-    # if ("Tocando oreja derecha con mano derecha" in poses and 
-    #     "Tocando oreja derecha con mano izquierda" in poses):
-    #     poses.append("Tocando oreja derecha con ambas manos")
+    if ("Tocando oreja derecha con mano derecha" in poses and 
+        "Tocando oreja derecha con mano izquierda" in poses):
+        poses.append("Tocando oreja derecha con ambas manos")
     
-    # if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EAR]):
-    #     poses.append("Tocando oreja izquierda con mano izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja izquierda con mano izquierda")
 
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EAR]):
-    #     poses.append("Tocando oreja izquierda con mano derecha")
+    if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja izquierda con mano derecha")
 
-    # if ("Tocando oreja izquierda con mano izquierda" in poses and 
-    #     "Tocando oreja izquierda con mano derecha" in poses):
-    #     poses.append("Tocando oreja izquierda con ambas manos")
+    if ("Tocando oreja izquierda con mano izquierda" in poses and 
+        "Tocando oreja izquierda con mano derecha" in poses):
+        poses.append("Tocando oreja izquierda con ambas manos")
     
     # if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]):
     #     poses.append("Tocando hombro izquierdo con mano izquierda")
