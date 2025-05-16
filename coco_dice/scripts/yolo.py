@@ -14,11 +14,14 @@ def is_below(point1, point2, threshold=15):
 def is_at_same_height(point1, point2, threshold=30):
     return 0 < abs(point1[1] - point2[1]) < threshold
 
-def is_right_of(point1, point2, threshold=30):
+def is_in_horizontal_range(point1, point2, threshold=30):
     return 0 < abs(point1[0] - point2[0]) < threshold
 
-def is_left_of(point1, point2, threshold=30):
+def is_right_of(point1, point2, threshold=30):
     return point2[0] - point1[0] > threshold
+
+def is_left_of(point1, point2, threshold=30):
+    return point1[0] - point2[0] > threshold
 
 def is_near(point1, point2, threshold=50):
     return calculate_distance(point1, point2) < threshold
@@ -58,20 +61,21 @@ def detect_poses(keypoints):
         poses.append("Ambos brazos abajo")
     
     if (is_at_same_height(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100) and 
-        is_right_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100)):
+        is_in_horizontal_range(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100)):
         poses.append("Brazo derecho hacia delante")
 
     if (is_at_same_height(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100) and 
-        is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100)):
+        is_in_horizontal_range(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100)):
         poses.append("Brazo izquierdo hacia delante")
 
     if "Brazo derecho hacia delante" in poses and "Brazo izquierdo hacia delante" in poses:
         poses.append("Ambos brazos hacia delante")
     
-    # if ((is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
-    #      is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER])) and
-    #     (is_left_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
-    #      is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]))):
+    # thershold = (keypoints[LEFT_SHOULDER][0] - keypoints[RIGHT_SHOULDER][0])//3
+    # if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
+    #     is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and
+    #     is_left_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], thershold) and 
+    #     is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold)):
     #     poses.append("Símbolo X con los brazos")
     
     # if is_near(keypoints[RIGHT_WRIST], keypoints[NOSE]):
