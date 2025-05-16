@@ -41,81 +41,81 @@ RIGHT_HIP = 12
 def detect_poses(keypoints):
     poses = []
     
-    # if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
-    #     is_above(keypoints[RIGHT_ELBOW], keypoints[RIGHT_SHOULDER]) and
-    #     keypoints[RIGHT_WRIST][1] != 0 and keypoints[RIGHT_ELBOW][1] != 0):
-    #     poses.append("Brazo derecho arriba")
+    if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
+        is_above(keypoints[RIGHT_ELBOW], keypoints[RIGHT_SHOULDER]) and
+        keypoints[RIGHT_WRIST][1] != 0 and keypoints[RIGHT_ELBOW][1] != 0):
+        poses.append("Brazo derecho arriba")
     
-    # if (is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and 
-    #     is_above(keypoints[LEFT_ELBOW], keypoints[LEFT_SHOULDER]) and
-    #     keypoints[LEFT_WRIST][1] != 0 and keypoints[LEFT_ELBOW][1] != 0):
-    #     poses.append("Brazo izquierdo arriba")
+    if (is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and 
+        is_above(keypoints[LEFT_ELBOW], keypoints[LEFT_SHOULDER]) and
+        keypoints[LEFT_WRIST][1] != 0 and keypoints[LEFT_ELBOW][1] != 0):
+        poses.append("Brazo izquierdo arriba")
     
-    # if "Brazo derecho arriba" in poses and "Brazo izquierdo arriba" in poses:
-    #     poses.append("Ambos brazos arriba")
+    if "Brazo derecho arriba" in poses and "Brazo izquierdo arriba" in poses:
+        poses.append("Ambos brazos arriba")
     
-    # if (is_below(keypoints[RIGHT_WRIST], keypoints[RIGHT_HIP]) and 
-    #     is_below(keypoints[LEFT_WRIST], keypoints[LEFT_HIP])):
-    #     poses.append("Ambos brazos abajo")
+    if (is_below(keypoints[RIGHT_WRIST], keypoints[RIGHT_HIP]) and 
+        is_below(keypoints[LEFT_WRIST], keypoints[LEFT_HIP])):
+        poses.append("Ambos brazos abajo")
     
-    # if (is_at_same_height(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100) and 
-    #     is_in_horizontal_range(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100)):
-    #     poses.append("Brazo derecho hacia delante")
+    if (is_at_same_height(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100) and 
+        is_in_horizontal_range(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], 100)):
+        poses.append("Brazo derecho hacia delante")
 
-    # if (is_at_same_height(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100) and 
-    #     is_in_horizontal_range(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100)):
-    #     poses.append("Brazo izquierdo hacia delante")
+    if (is_at_same_height(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100) and 
+        is_in_horizontal_range(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], 100)):
+        poses.append("Brazo izquierdo hacia delante")
 
-    # if "Brazo derecho hacia delante" in poses and "Brazo izquierdo hacia delante" in poses:
-    #     poses.append("Ambos brazos hacia delante")
+    if "Brazo derecho hacia delante" in poses and "Brazo izquierdo hacia delante" in poses:
+        poses.append("Ambos brazos hacia delante")
     
-    # thershold = (keypoints[LEFT_SHOULDER][0] - keypoints[RIGHT_SHOULDER][0])//3
-    # if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
-    #     is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and
-    #     is_left_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], thershold) and 
-    #     is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold)):
-    #     poses.append("Símbolo X con los brazos")
+    thershold = (keypoints[LEFT_SHOULDER][0] - keypoints[RIGHT_SHOULDER][0])//3
+    if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
+        is_above(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER]) and
+        is_left_of(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER], thershold) and 
+        is_right_of(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold)):
+        poses.append("Símbolo X con los brazos")
     
-    # thershold_touch_nose = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[NOSE], thershold_touch_nose):
-    #     poses.append("Tocando nariz con muneca derecha")
+    thershold_touch_nose = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
+    if is_near(keypoints[RIGHT_WRIST], keypoints[NOSE], thershold_touch_nose):
+        poses.append("Tocando nariz con muneca derecha")
     
-    # if is_near(keypoints[LEFT_WRIST], keypoints[NOSE], thershold_touch_nose):
-    #     poses.append("Tocando nariz con muneca izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[NOSE], thershold_touch_nose):
+        poses.append("Tocando nariz con muneca izquierda")
     
-    # thershold_touch_eye = (keypoints[LEFT_EYE][0] - keypoints[RIGHT_EYE][0])//2
-    # if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EYE], thershold_touch_eye):
-    #     poses.append("Tocando ojo izquierdo con muneca izquierda")
+    thershold_touch_eye = (keypoints[LEFT_EYE][0] - keypoints[RIGHT_EYE][0])//2
+    if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo izquierdo con muneca izquierda")
 
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EYE], thershold_touch_eye):
-    #     poses.append("Tocando ojo izquierdo con muneca derecha")
+    if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo izquierdo con muneca derecha")
     
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
-    #     poses.append("Tocando ojo derecho con muneca derecha")
+    if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo derecho con muneca derecha")
 
-    # if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
-    #     poses.append("Tocando ojo derecho con muneca izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EYE], thershold_touch_eye):
+        poses.append("Tocando ojo derecho con muneca izquierda")
     
-    # thershold_touch_ear = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EAR], thershold_touch_ear):
-    #     poses.append("Tocando oreja derecha con mano derecha")
+    thershold_touch_ear = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
+    if is_near(keypoints[RIGHT_WRIST], keypoints[RIGHT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja derecha con mano derecha")
 
-    # if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EAR], thershold_touch_ear):
-    #     poses.append("Tocando oreja derecha con mano izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja derecha con mano izquierda")
 
-    # if ("Tocando oreja derecha con mano derecha" in poses and 
-    #     "Tocando oreja derecha con mano izquierda" in poses):
-    #     poses.append("Tocando oreja derecha con ambas manos")
+    if ("Tocando oreja derecha con mano derecha" in poses and 
+        "Tocando oreja derecha con mano izquierda" in poses):
+        poses.append("Tocando oreja derecha con ambas manos")
     
-    # if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EAR], thershold_touch_ear):
-    #     poses.append("Tocando oreja izquierda con mano izquierda")
+    if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja izquierda con mano izquierda")
 
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EAR], thershold_touch_ear):
-    #     poses.append("Tocando oreja izquierda con mano derecha")
+    if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_EAR], thershold_touch_ear):
+        poses.append("Tocando oreja izquierda con mano derecha")
 
-    # if ("Tocando oreja izquierda con mano izquierda" in poses and 
-    #     "Tocando oreja izquierda con mano derecha" in poses):
-    #     poses.append("Tocando oreja izquierda con ambas manos")
+    if ("Tocando oreja izquierda con mano izquierda" in poses and 
+        "Tocando oreja izquierda con mano derecha" in poses):
+        poses.append("Tocando oreja izquierda con ambas manos")
     
     thershold_touch_shoulder = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*2
     if is_near(keypoints[LEFT_WRIST], keypoints[LEFT_SHOULDER], thershold_touch_shoulder):
