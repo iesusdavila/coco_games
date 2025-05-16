@@ -130,11 +130,14 @@ def detect_poses(keypoints):
     if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_SHOULDER], thershold_touch_shoulder):
         poses.append("Tocando hombro derecho con mano izquierda")
     
-    # if is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_ELBOW]):
-    #     poses.append("Tocando codo izquierdo con mano derecha")
+    thershold_touch_elbow = (keypoints[NOSE][1] - keypoints[LEFT_EYE][1])*4
+    if (is_near(keypoints[RIGHT_WRIST], keypoints[LEFT_ELBOW], thershold_touch_elbow) and
+        keypoints[LEFT_ELBOW][1] != 0 and keypoints[RIGHT_WRIST][1] != 0):
+        poses.append("Tocando codo izquierdo con mano derecha")
     
-    # if is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_ELBOW]):
-    #     poses.append("Tocando codo derecho con mano izquierda")
+    if (is_near(keypoints[LEFT_WRIST], keypoints[RIGHT_ELBOW], thershold_touch_elbow) and
+        keypoints[RIGHT_ELBOW][1] != 0 and keypoints[LEFT_WRIST][1] != 0):
+        poses.append("Tocando codo derecho con mano izquierda")
     
     # if (is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_SHOULDER]) and 
     #     is_above(keypoints[RIGHT_WRIST], keypoints[RIGHT_ELBOW]) and
@@ -148,7 +151,7 @@ def detect_poses(keypoints):
     
     return poses
 
-model = YOLO("../models/yolov8m-pose.pt")
+model = YOLO("../models/yolov8s-pose.pt")
 
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
