@@ -1,0 +1,79 @@
+challenges:
+  - id: 1
+    pose: "Brazo derecho arriba"
+    text: "Alza el brazo derecho"
+  - id: 2
+    pose: "Brazo izquierdo arriba"
+    text: "Alza el brazo izquierdo"
+  - id: 3
+    pose: "Ambos brazos arriba"
+    text: "Alza ambos brazos"
+  - id: 4
+    pose: "Ambos brazos abajo"
+    text: "Baja ambos brazos"
+  - id: 5
+    pose: "Brazo derecho hacia delante"
+    text: "Extiende el brazo derecho hacia delante"
+  - id: 6
+    pose: "Brazo izquierdo hacia delante"
+    text: "Extiende el brazo izquierdo hacia delante"
+  - id: 7
+    pose: "Ambos brazos hacia delante"
+    text: "Extiende ambos brazos hacia delante"
+  - id: 8
+    pose: "Símbolo X con los brazos"
+    text: "Forma un símbolo X con los brazos"
+  - id: 9
+    pose: "Tocando nariz con muneca derecha"
+    text: "Toca la nariz con la muñeca derecha"
+  - id: 10
+    pose: "Tocando nariz con muneca izquierda"
+    text: "Toca la nariz con la muñeca izquierda"
+  - id: 11
+    pose: "Tocando ojo izquierdo con muneca izquierda"
+    text: "Toca el ojo izquierdo con la muñeca izquierda"
+  - id: 12
+    pose: "Tocando ojo izquierdo con muneca derecha"
+    text: "Toca el ojo izquierdo con la muñeca derecha"
+  - id: 13
+    pose: "Tocando ojo derecho con muneca derecha"
+    text: "Toca el ojo derecho con la muñeca derecha"
+  - id: 14
+    pose: "Tocando ojo derecho con muneca izquierda"
+    text: "Toca el ojo derecho con la muñeca izquierda"
+  - id: 15
+    pose: "Tocando oreja derecha con mano derecha"
+    text: "Toca la oreja derecha con la mano derecha"
+  - id: 16
+    pose: "Tocando oreja derecha con mano izquierda"
+    text: "Toca la oreja derecha con la mano izquierda"
+  - id: 17
+    pose: "Tocando oreja derecha con ambas manos"
+    text: "Toca la oreja derecha con ambas manos"
+  - id: 18
+    pose: "Tocando oreja izquierda con mano izquierda"
+    text: "Toca la oreja izquierda con la mano izquierda"
+  - id: 19
+    pose: "Tocando oreja izquierda con mano derecha"
+    text: "Toca la oreja izquierda con la mano derecha"
+  - id: 20
+    pose: "Tocando oreja izquierda con ambas manos"
+    text: "Toca la oreja izquierda con ambas manos"
+  - id: 21
+    pose: "Tocando hombro izquierdo con mano izquierda"
+    text: "Toca el hombro izquierdo con la mano izquierda"
+  - id: 22
+    pose: "Tocando hombro izquierdo con mano derecha"
+    text: "Toca el hombro izquierdo con la mano derecha"
+  - id: 23
+    pose: "Tocando hombro derecho con mano derecha"
+    text: "Toca el hombro derecho con la mano derecha"
+  - id: 24
+    pose: "Tocando hombro derecho con mano izquierda"
+    text: "Toca el hombro derecho con la mano izquierda"
+  - id: 25
+    pose: "Tocando codo izquierdo con mano derecha"
+    text: "Toca el codo izquierdo con la mano derecha"
+  - id: 26
+    pose: "Tocando codo derecho con mano izquierda"
+    text: "Toca el codo derecho con la mano izquierda"
