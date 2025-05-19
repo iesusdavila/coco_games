@@ -12,7 +12,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     pose_detector_node = Node(
         package='coco_dice',
-        executable='pose_detector.py',
+        executable='pose_detector',
         name='pose_detector',
         output='screen'
     )
@@ -40,7 +40,7 @@ def generate_launch_description():
 
     game_manager_node = Node(
         package='coco_dice',
-        executable='game_manager.py',
+        executable='game_manager',
         name='game_manager',
         output='screen'
     )
