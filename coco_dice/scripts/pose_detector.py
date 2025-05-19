@@ -3,14 +3,9 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int16
-from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
-from coco_interfaces.msg import PoseResult
-import os
-from ament_index_python.packages import get_package_share_directory
-import cv2
+from coco_interfaces.msg import PoseResult, PoseLandmarks
 import numpy as np
-from ultralytics import YOLO
 
 DICT_GESTURES = {
     1: "Brazo derecho arriba",
@@ -55,12 +50,8 @@ class CocoPoseDetector(Node):
         self.create_subscription(
             Int16, '/current_challenge', self.handle_new_challenge, 10)
         self.create_subscription(
-            Image, '/image_raw', self.handle_camera_image, 10)
-        
-        pkg_share_dir = get_package_share_directory('coco_dice')
-        model_path = os.path.join(pkg_share_dir, 'models', 'yolov8s-pose.pt')
-        self.model = YOLO(model_path)
-                
+            PoseLandmarks, '/pose_landmarks', self.detect_poses, 10)
+                        
         self.current_challenge = None
         self.game_active = False
         
@@ -77,21 +68,13 @@ class CocoPoseDetector(Node):
         self.RIGHT_WRIST = 10
         self.LEFT_HIP = 11
         self.RIGHT_HIP = 12
-        
-        self.create_timer(1/30, self.detect_poses)
-        
+                
         self.get_logger().info('Coco Pose Detector started successfully')
     
     def handle_new_challenge(self, msg):
         self.current_challenge = msg.data
         self.get_logger().info(f'New challenge received: {self.current_challenge}')
-    
-    def handle_camera_image(self, msg):
-        self.frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8') 
-
-        cv2.imshow("Camera Feed", self.frame)
-        cv2.waitKey(1)
-    
+        
     def is_above(self, point1, point2, threshold=30):
         return point2[1] - point1[1] > threshold
 
@@ -278,28 +261,21 @@ class CocoPoseDetector(Node):
         
         return False
     
-    def detect_poses(self):
-        """Detect poses from camera feed and publish results"""
+    def detect_poses(self, msg):
         if self.current_challenge is None:
             return
         
-        self.get_logger().info("Running YOLO model")
-        results = self.model(self.frame)
-        self.get_logger().info("YOLO model finished")
-        
-        keypoints = results[0].keypoints
-        if keypoints is not None and len(keypoints.xy) > 0:
-            person_keypoints = []
-            for j, (x, y) in enumerate(keypoints.xy[0].cpu().numpy()):
-                person_keypoints.append((float(x), float(y)))
+        person_keypoints = []
+        for j, (x, y) in enumerate(msg.landmarks):
+            person_keypoints.append((float(x), float(y)))
 
-            result_msg = PoseResult()
-            result_msg.challenge = self.current_challenge
-            result_msg.detected_poses = self.detect_pose_actions(person_keypoints)
-            result_msg.timestamp = self.get_clock().now().to_msg()
-            self.get_logger().info(f"Challenge: {self.current_challenge}")
-            
-            self.pose_result_publisher.publish(result_msg)
+        result_msg = PoseResult()
+        result_msg.challenge = self.current_challenge
+        result_msg.detected_poses = self.detect_pose_actions(person_keypoints)
+        result_msg.timestamp = self.get_clock().now().to_msg()
+        self.get_logger().info(f"Challenge: {self.current_challenge}")
+        
+        self.pose_result_publisher.publish(result_msg)
     
     def destroy_node(self):
         """Cleanup resources when node is destroyed"""

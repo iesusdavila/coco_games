@@ -13,6 +13,11 @@ install(PROGRAMS
 )
 
 install(PROGRAMS
+  scripts/body_landmarks.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(PROGRAMS
   scripts/pose_detector.py
   DESTINATION lib/${PROJECT_NAME}
 )

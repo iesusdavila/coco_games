@@ -17,6 +17,13 @@ def generate_launch_description():
         output='screen'
     )
 
+    body_landmarks = Node(
+        package='coco_dice',
+        executable='body_landmarks.py',
+        name='body_landmarks',
+        output='screen'
+    )
+
     speaker_node = Node(
         package='coco_dice',
         executable='speaker_node.py',
@@ -40,7 +47,18 @@ def generate_launch_description():
 
     return LaunchDescription([
         usb_cam_node,
-        pose_detector_node,
+        body_landmarks,
+        RegisterEventHandler(
+            OnProcessStart(
+                target_action=body_landmarks,
+                on_start=[
+                    TimerAction(
+                        period=3.0,
+                        actions=[pose_detector_node]
+                    )
+                ]
+            )
+        ),
         RegisterEventHandler(
             OnProcessStart(
                 target_action=pose_detector_node,
