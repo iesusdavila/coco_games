@@ -10,7 +10,6 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # Nodo pose_detector (se lanza inmediatamente)
     pose_detector_node = Node(
         package='coco_dice',
         executable='pose_detector.py',
@@ -18,7 +17,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Nodo speaker_node (se lanzará después con delay)
     speaker_node = Node(
         package='coco_dice',
         executable='speaker_node.py',
@@ -26,7 +24,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Nodo usb_cam (se lanza sin condición)
     usb_cam_node = Node(
         package="usb_cam",
         executable="usb_cam_node_exe",
@@ -34,7 +31,6 @@ def generate_launch_description():
         output="screen"
     )
 
-    # Nodo game_manager (se lanza sin condición)
     game_manager_node = Node(
         package='coco_dice',
         executable='game_manager.py',
