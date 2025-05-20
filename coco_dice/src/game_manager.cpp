@@ -71,14 +71,14 @@ private:
     void handle_pose_result(const coco_interfaces::msg::PoseResult::SharedPtr msg)
     {        
         if (!waiting_for_pose_ || audio_playing_) return;
-        
-        RCLCPP_INFO(this->get_logger(), "Pose result received");
-        
+                
         current_challenge_ = msg->challenge;
         bool detected_poses = msg->detected_poses;
         
         if (detected_poses)
         {
+            RCLCPP_INFO(this->get_logger(), "Pose result received");
+
             if (correct_pose_start_time_ == 0.0)
             {
                 correct_pose_start_time_ = get_current_time();
