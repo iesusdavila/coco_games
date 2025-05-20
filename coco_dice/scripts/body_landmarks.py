@@ -25,7 +25,7 @@ class BodyPointsDetectorNode(Node):
     def image_callback(self, msg):
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
 
-        results = self.model(frame)
+        results = self.model(frame, verbose=False)
 
         keypoints = results[0].keypoints
         if keypoints is not None and len(keypoints.xy) > 0:
