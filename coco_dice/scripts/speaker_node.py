@@ -99,7 +99,9 @@ class CocoSpeakerNode(Node):
         self.get_logger().info(f"Selected challenge: {challenge_pose}")
         self.current_challenge_publisher.publish(challenge_msg)
         
-        threading.Thread(target=self.speak_text, args=(challenge['text'],)).start()
+        text_random = random.choice(challenge['text'])
+
+        threading.Thread(target=self.speak_text, args=(text_random,)).start()
     
     def speak_text(self, text):
         if self.voice is None:

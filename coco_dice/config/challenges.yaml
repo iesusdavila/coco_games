@@ -1,79 +1,157 @@
 challenges:
   - id: 1
     pose: "Brazo derecho arriba"
-    text: "Alza el brazo derecho"
+    text: 
+      - "  ¡Coco quiere ver tu brazo derecho apuntando a las nubes! ¿Listo?"
+      - "  ¿Puedes levantar el brazo derecho como si alcanzaras una estrella?"
+      - "  ¡Brazo derecho arriba! Demuéstrale a Coco que eres rápido como un rayo."
   - id: 2
     pose: "Brazo izquierdo arriba"
-    text: "Alza el brazo izquierdo"
+    text: 
+      - "  ¡Ahora es el turno del brazo izquierdo! Sube, sube… ¡como un cohete!"
+      - "  ¡Levanta el brazo izquierdo y saluda como un astronauta!"
+      - "  ¿Lograrás levantar el brazo izquierdo más alto que un gigante? ¡Inténtalo!"
   - id: 3
     pose: "Ambos brazos arriba"
-    text: "Alza ambos brazos"
+    text: 
+      - "  Ahora Coco dice que alces ambos brazos arriba, ¡vamos tú puedes!"
+      - "  Vamos a ver si estás atento: Coco dice que levantes tus dos brazos."
+      - "  ¡Despliega tus brazos como alas de águila! Arriba los dos, ¡ya!"
   - id: 4
     pose: "Ambos brazos abajo"
-    text: "Baja ambos brazos"
+    text: 
+      - "  ¡Hora de relajarse! Baja los brazos como si fueran de algodón."
+      - "  Deja caer los brazos suavecito, como hojas en otoño."
+      - "  Que bueno es relajarse: ¡brazos abajo y sonrisa arriba!."
   - id: 5
     pose: "Brazo derecho hacia delante"
-    text: "Extiende el brazo derecho hacia delante"
+    text: 
+      - "  ¡Brazo derecho al ataque! Estíralo como si fueras un superhéroe lanzando un rayo."
+      - "  ¿Puedes empujar el aire con tu brazo derecho? ¡Fuertes como un elefante!"
+      - "  Imagina que alcanzas un tesoro lejano… ¡Estira ese brazo derecho y atrápalo!"
   - id: 6
     pose: "Brazo izquierdo hacia delante"
-    text: "Extiende el brazo izquierdo hacia delante"
+    text: 
+      - "  ¡Apunta con tu brazo izquierdo! Como si señalaras la luna con un láser mágico."
+      - "  El brazo izquierdo quiere ser el protagonista… ¡Extiéndelo con estilo!"
+      - "  ¿Serás rápido? Toca la pared imaginaria con tu mano izquierda… ¡en 3, 2, 1!"
   - id: 7
     pose: "Ambos brazos hacia delante"
-    text: "Extiende ambos brazos hacia delante"
+    text: 
+      - "  ¡Zombi alert! Camina con los brazos tiesos hacia adelante… ¡pero sin gemidos!"
+      - "  Estira ambos brazos como si abrazaras un globo gigante. ¡No lo dejes escapar!"
+      - "  ¡A por el récord! Mantén los brazos rectos hacia el frente como un tren veloz."
   - id: 8
     pose: "Símbolo X con los brazos"
-    text: "Forma un símbolo X con los brazos"
+    text: 
+      - "  ¡Cruz de guerrero! Forma una X con los brazos y protege tu tesoro secreto."
+      - "  ¡Brazo derecho arriba e izquierdo abajo! ¡Oops, no… mejor haz una X divertida!"
+      - "  ¿Sabes cómo se hace la X de los piratas? ¡Cruza los brazos y di '¡Ajúa!' (pero sin hablar)."
   - id: 9
     pose: "Tocando nariz con muneca derecha"
-    text: "Toca la nariz con la muñeca derecha"
+    text: 
+      - "  ¡A jugar al detective! Toca tu nariz con la muñeca derecha como si buscaras pistas secretas."
+      - "  ¿Puedes hacer que tu muñeca derecha y tu nariz sean mejores amigos? ¡Chócalas!"
+      - "  ¡Reto ninja! Toca la nariz con la muñeca derecha sin hacer ruido... ¡Shhh!"
   - id: 10
     pose: "Tocando nariz con muneca izquierda"
-    text: "Toca la nariz con la muñeca izquierda"
+    text: 
+      - "  Ahora el lado izquierdo quiere participar. ¿Puedes tocar tu nariz con la muñeca izquierda sin reírte?"
+      - "  ¡Muéstrale a tu nariz que la muñeca izquierda también es divertida! ¡A tocar!"
+      - "  ¿Serás un robot? Toca la nariz con la mano izquierda y di '¡Bip-bop!' (pero solo en tu mente)."
   - id: 11
     pose: "Tocando ojo izquierdo con muneca izquierda"
-    text: "Toca el ojo izquierdo con la muñeca izquierda"
+    text: 
+      - "  ¡Cuidado con el ojo izquierdo! Tócalo suavemente con la muñeca izquierda, como si pusieras un parche de pirata."
+      - "  Cierra el ojo derecho y toca el izquierdo... ¡como un cíclope elegante!"
+      - "  ¡Zas! Toca tu ojo izquierdo con la muñeca izquierda antes de que Coco cuente hasta 3."
   - id: 12
     pose: "Tocando ojo izquierdo con muneca derecha"
-    text: "Toca el ojo izquierdo con la muñeca derecha"
+    text: 
+      - "  ¡Manos cruzadas! Usa la muñeca derecha para tocar el ojo izquierdo, como un mago haciendo un truco."
+      - "  ¿Lograrás tocar el ojo izquierdo con la muñeca derecha sin enredarte? ¡Vamos!"
+      - "  ¡Equilibrio total! Ojo izquierdo + muñeca derecha = ¡misión imposible... o no?"
   - id: 13
     pose: "Tocando ojo derecho con muneca derecha"
-    text: "Toca el ojo derecho con la muñeca derecha"
+    text: 
+      - "  ¡Hora de hacer cosquillas! Toca tu ojo derecho con la muñeca derecha, pero con mucho cuidado, ¿vale?"
+      - "  Imagina que tu ojo derecho es un botón mágico... ¡Tócalo con tu muñeca para activarlo!"
+      - "  ¿Puedes hacerlo con un ojo cerrado? ¡Toca el ojo derecho y haz como que duermes!."
   - id: 14
     pose: "Tocando ojo derecho con muneca izquierda"
-    text: "Toca el ojo derecho con la muñeca izquierda"
+    text: 
+      - "  ¡Manos traviesas! Usa tu muñeca izquierda para tocar el ojo derecho, como si desactivaras una bomba de cosquillas."
+      - "  Podrás tocar el ojo derecho con la muñeca izquierda sin hacerte *guiño-winki*?"
+      - "  ¡Reto de pulpo! Toca tu ojo derecho con la mano izquierda… ¿Serás más ágil que un calamar?"
   - id: 15
     pose: "Tocando oreja derecha con mano derecha"
-    text: "Toca la oreja derecha con la mano derecha"
+    text: 
+      - "  ¡Coco dice: Agarra tu oreja derecha como si escucharas un secreto del espacio!."
+      - "  ¿Puedes tocar tu oreja derecha y hacer la pose de un teléfono antiguo? ¡Ring-ring!"
+      - "  ¡Oreja derecha al rescate! Tócala rápido antes de que Coco diga *¡plas!*"
   - id: 16
     pose: "Tocando oreja derecha con mano izquierda"
-    text: "Toca la oreja derecha con la mano izquierda"
+    text: 
+      - "  ¡Cruza la misión! Toca la oreja derecha con la mano izquierda, como un detective descubriendo un misterio."
+      - "  ¿Tu mano izquierda y tu oreja derecha son enemigos o amigos? ¡Haz que se den la paz!"
+      - "  ¡Equilibrista profesional! Toca la oreja derecha con la mano izquierda sin perder el balance… ¡uhh!"
   - id: 17
     pose: "Tocando oreja derecha con ambas manos"
-    text: "Toca la oreja derecha con ambas manos"
+    text: 
+      - "  ¡Protege tu oreja derecha! Usa ambas manos como si fuera un paraguas contra una lluvia de confeti."
+      - "  ¡Tapa tu oreja derecha con las dos manos! ¿Escuchas el sonido del silencio... o de tu risa?"
+      - "  ¡Hora de mimo! Acaricia tu oreja derecha con ambas manos como si fuera un conejito tímido."
   - id: 18
     pose: "Tocando oreja izquierda con mano izquierda"
-    text: "Toca la oreja izquierda con la mano izquierda"
+    text: 
+      - "  ¡Oreja izquierda, acción! Tócala con tu mano izquierda como si ajustaras una antena alienígena."
+      - "  ¿Puedes tocar tu oreja izquierda y hacer la cara de *¡Eureka!*? ¡Descubrimiento científico!"
+      - "  ¡Saludo espacial! Levanta la mano izquierda, toca tu oreja y di (en secreto): *¡Conexión intergaláctica establecida!*"
   - id: 19
     pose: "Tocando oreja izquierda con mano derecha"
-    text: "Toca la oreja izquierda con la mano derecha"
+    text: 
+      - "  ¡Cruce mágico! Toca tu oreja izquierda con la mano derecha, como si desbloquearas un poder secreto de superheroína."
+      - "  ¿Puedes tocar la oreja izquierda con la mano derecha sin hacerte nudos en los dedos? ¡Tú puedes!"
+      - "  ¡Juego de espejos! Imagina que eres un mimo atrapado en una caja... ¡y toca esa oreja izquierda con la mano opuesta!"
   - id: 20
     pose: "Tocando oreja izquierda con ambas manos"
-    text: "Toca la oreja izquierda con ambas manos"
+    text: 
+      - "  ¡Protección máxima! Tapa tu oreja izquierda con ambas manos como si un dinosaurio rugiera... ¡pero sin asustarte!"
+      - "  Abraza tu oreja izquierda con las dos manos, ¡como si guardaras un diamante invisible!"
+      - "  ¡Silencio cósmico! Cúbrete la oreja izquierda y susurra: *¡Alienígenas, estoy listo para escuchar!*"
   - id: 21
     pose: "Tocando hombro izquierdo con mano izquierda"
-    text: "Toca el hombro izquierdo con la mano izquierda"
+    text: 
+      - "  ¡Baile del pollito! Toca tu hombro izquierdo con la mano izquierda y mueve las caderas... ¡pero Coco no está mirando!"
+      - "  Toca tu hombro como si tuvieras un pajarito dormido ahí. ¡Shhh, no lo despiertes!"
+      - "  ¡Robot en acción! Brazo izquierdo al hombro izquierdo... *¡Bip-bip! Sistema de calentamiento activado.*"
   - id: 22
     pose: "Tocando hombro izquierdo con mano derecha"
-    text: "Toca el hombro izquierdo con la mano derecha"
+    text: 
+      - "  ¡Ninja sigiloso! Cruza tu mano derecha para tocar el hombro izquierdo... ¡sin que el guardián de la pizza lo note!"
+      - "  ¿Tu mano derecha y tu hombro izquierdo son equipo? ¡Chócalos como compañeros de aventuras!"
+      - "  ¡Reto de gimnasta! Toca el hombro izquierdo con la mano derecha y mantén el equilibrio... ¡como un flamenco elegante!"
   - id: 23
     pose: "Tocando hombro derecho con mano derecha"
-    text: "Toca el hombro derecho con la mano derecha"
+    text: 
+      - "  ¡Superhéroe en acción! Toca tu hombro derecho como si ajustaras una capa voladora. ¡Hora de salvar el día!"
+      - "  Tócate el hombro derecho y di: *¡Este es mi botón de turbo!* (¡Púlsalo y corre como el viento!)."
+      - "  ¡Chequeo de músculos! Toca tu hombro derecho y gruñe como un gorila... ¡pero solo por 1 segundo!"
   - id: 24
     pose: "Tocando hombro derecho con mano izquierda"
-    text: "Toca el hombro derecho con la mano izquierda"
+    text: 
+      - "  ¡Misión cruzada! Toca tu hombro derecho con la mano izquierda, como si fueras un robot con cables cruzados. ¡Cuidado con los cortocircuitos!"
+      - "  ¿Puedes tocar el hombro derecho con la mano izquierda y hacer la cara de *¡Uy, me equivoqué de brazo!*? ¡Ja!"
+      - "  ¡Reto de pulpo elegante! Usa tu mano izquierda para alcanzar el hombro derecho... ¡y balancea como si nadaras!"
   - id: 25
     pose: "Tocando codo izquierdo con mano derecha"
-    text: "Toca el codo izquierdo con la mano derecha"
+    text: 
+      - "  ¡Codo izquierdo al descubierto! Tócalo con la mano derecha como si buscaras un botón invisible de emergencia. ¡Piiip!"
+      - "  ¿Logras tocar el codo izquierdo con la mano derecha sin parecer un pretzel humano? ¡Tú puedes!"
+      - "  ¡Hora del saludo extraterrestre! Mano derecha al codo izquierdo y di: *¡Nanu nanu!* (pero solo en tu cabeza)."
   - id: 26
     pose: "Tocando codo derecho con mano izquierda"
-    text: "Toca el codo derecho con la mano izquierda"
+    text: 
+      - "  ¡Equilibrio de pingüino! Toca tu codo derecho con la mano izquierda y mueve las caderas como si resbalaras en hielo."
+      - "  Imagina que tu codo derecho es un joystick... ¡Tócalo con la mano izquierda y *juega* al nivel más difícil!"
+      - "  ¡Reto de contorsionista! ¿Podrás tocar el codo derecho con la mano izquierda y sacar la lengua? ¡Doble desafío!"
