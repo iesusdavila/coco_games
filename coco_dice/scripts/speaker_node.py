@@ -95,7 +95,6 @@ class CocoSpeakerNode(Node):
         threading.Thread(target=self.speak_text, args=(challenge['text'],)).start()
     
     def speak_text(self, text):
-        """Convert text to speech and play it"""
         if self.voice is None:
             self.get_logger().error("TTS engine not initialized")
             return

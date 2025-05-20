@@ -10,11 +10,6 @@ from ultralytics import YOLO
 import os
 from ament_index_python.packages import get_package_share_directory
 
-LANDMARK_GROUPS = [
-    [11, 13, 15], 
-    [12, 14, 16], 
-]
-
 class BodyPointsDetectorNode(Node):
     def __init__(self):
         super().__init__('body_points_detector_node')

@@ -30,7 +30,6 @@ public:
         current_challenge_ = 0;
         game_active_ = false;
         
-        // Set up body landmark indices
         NOSE = 0;
         LEFT_EYE = 1;
         RIGHT_EYE = 2;
@@ -45,7 +44,6 @@ public:
         LEFT_HIP = 11;
         RIGHT_HIP = 12;
         
-        // Initialize gesture dictionary
         initialize_gesture_dict();
         
         RCLCPP_INFO(this->get_logger(), "Coco Pose Detector started successfully");
@@ -397,10 +395,10 @@ private:
         if (current_challenge_ == 0) return;
         
         std::vector<std::pair<float, float>> person_keypoints;
-        for (const auto& landmark : msg->landmarks) // Iterar sobre cada landmark
+        for (const auto& landmark : msg->landmarks) 
         {
-            float x = landmark.x;  // Acceder al campo x del Point
-            float y = landmark.y;  // Acceder al campo y del Point
+            float x = landmark.x;  
+            float y = landmark.y;  
             person_keypoints.emplace_back(x, y);
         }
         
@@ -408,23 +406,18 @@ private:
         result_msg->challenge = current_challenge_;
         result_msg->detected_poses = detect_pose_actions(person_keypoints);
         result_msg->timestamp = this->now();
-        RCLCPP_INFO(this->get_logger(), "Challenge: %d", current_challenge_);
         
         pose_result_publisher_->publish(std::move(result_msg));
     }
     
-    // Publishers
     rclcpp::Publisher<coco_interfaces::msg::PoseResult>::SharedPtr pose_result_publisher_;
     
-    // Subscriptions
     rclcpp::Subscription<std_msgs::msg::Int16>::SharedPtr current_challenge_subscription_;
     rclcpp::Subscription<coco_interfaces::msg::PoseLandmarks>::SharedPtr pose_landmarks_subscription_;
     
-    // Game state variables
     int current_challenge_;
     bool game_active_;
     
-    // Body landmark indices
     int NOSE;
     int LEFT_EYE;
     int RIGHT_EYE;
@@ -439,7 +432,6 @@ private:
     int LEFT_HIP;
     int RIGHT_HIP;
     
-    // Gesture dictionary
     std::map<int, std::string> DICT_GESTURES;
 };
 

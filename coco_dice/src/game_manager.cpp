@@ -38,7 +38,6 @@ public:
         challenge_timer_ = this->create_wall_timer(
             500ms, std::bind(&CocoGameManager::check_challenge_timeout, this));
         
-        RCLCPP_INFO(this->get_logger(), "Coco Game Manager started successfully");
         RCLCPP_INFO(this->get_logger(), "Game started");
     }
 
@@ -47,10 +46,7 @@ private:
     {
         audio_playing_ = msg->data;
         
-        if (!audio_playing_ && !detection_ongoing_)
-        {
-            start_detection();
-        }
+        if (!audio_playing_ && !detection_ongoing_) start_detection();
     }
     
     void start_detection()
@@ -63,10 +59,7 @@ private:
     
     void check_challenge_timeout()
     {
-        if (!waiting_for_pose_ || challenge_timeout_ == 0.0)
-        {
-            return;
-        }
+        if (!waiting_for_pose_ || challenge_timeout_ == 0.0) return;
         
         if (get_current_time() > challenge_timeout_)
         {
@@ -76,14 +69,8 @@ private:
     }
     
     void handle_pose_result(const coco_interfaces::msg::PoseResult::SharedPtr msg)
-    {
-        RCLCPP_INFO(this->get_logger(), "LEYENDO DATA DE POSE: %s", 
-                    msg->detected_poses ? "true" : "false");
-        
-        if (!waiting_for_pose_ || audio_playing_)
-        {
-            return;
-        }
+    {        
+        if (!waiting_for_pose_ || audio_playing_) return;
         
         RCLCPP_INFO(this->get_logger(), "Pose result received");
         
@@ -123,7 +110,6 @@ private:
                            std::to_string(score_) + ".";
         feedback_publisher_->publish(std::move(feedback_msg));
         
-        // Sleep for 2 seconds
         std::this_thread::sleep_for(std::chrono::seconds(2));
         
         auto next_challenge_msg = std::make_unique<std_msgs::msg::Bool>();
@@ -143,7 +129,6 @@ private:
         feedback_msg->data = feedback_text;
         feedback_publisher_->publish(std::move(feedback_msg));
         
-        // Sleep for 2 seconds
         std::this_thread::sleep_for(std::chrono::seconds(2));
         
         auto next_challenge_msg = std::make_unique<std_msgs::msg::Bool>();
@@ -157,18 +142,14 @@ private:
             std::chrono::system_clock::now().time_since_epoch()).count()) / 1000.0;
     }
     
-    // Publishers
     rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr next_challenge_publisher_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr feedback_publisher_;
     
-    // Subscriptions
     rclcpp::Subscription<coco_interfaces::msg::PoseResult>::SharedPtr pose_result_subscription_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr audio_status_subscription_;
     
-    // Timers
     rclcpp::TimerBase::SharedPtr challenge_timer_;
     
-    // Game state variables
     int current_challenge_;
     int score_;
     bool audio_playing_;
