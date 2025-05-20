@@ -33,7 +33,7 @@ public:
         challenge_timeout_ = 0.0;
         waiting_for_pose_ = false;
         correct_pose_start_time_ = 0.0;
-        correct_pose_duration_ = 1.0;
+        correct_pose_duration_ = 0.5;
         
         challenge_timer_ = this->create_wall_timer(
             500ms, std::bind(&CocoGameManager::check_challenge_timeout, this));
@@ -53,7 +53,7 @@ private:
     {
         detection_ongoing_ = true;
         waiting_for_pose_ = true;
-        challenge_timeout_ = get_current_time() + 10.0;
+        challenge_timeout_ = get_current_time() + 20.0;
         RCLCPP_INFO(this->get_logger(), "Detection phase started");
     }
     
@@ -64,7 +64,7 @@ private:
         if (get_current_time() > challenge_timeout_)
         {
             RCLCPP_INFO(this->get_logger(), "Challenge timed out");
-            handle_failed_challenge("¡Tiempo agotado! Vamos a intentar con otro desafío.");
+            handle_failed_challenge(" ¡Tiempo agotado! Vamos a intentar con otro desafío.");
         }
     }
     
@@ -106,7 +106,7 @@ private:
                     "Challenge completed successfully! Score: %d", score_);
         
         auto feedback_msg = std::make_unique<std_msgs::msg::String>();
-        feedback_msg->data = "¡Muy bien! Has completado el desafío. Tu puntuación es " + 
+        feedback_msg->data = " ¡Muy bien! Has completado el desafío. Tu puntuación es " + 
                            std::to_string(score_) + ".";
         feedback_publisher_->publish(std::move(feedback_msg));
         
