@@ -2,7 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Bool, Int16
+from std_msgs.msg import Bool, Int16, String
 import random
 import yaml
 import os
@@ -34,6 +34,8 @@ class CocoSpeakerNode(Node):
         
         self.create_subscription(
             Bool, '/next_challenge', self.handle_next_challenge, 10)
+        self.create_subscription(
+            String, '/game_feedback', self.speak_game_feedback, 10)
         
         self.challenges = []
         self.load_challenges()
@@ -78,6 +80,11 @@ class CocoSpeakerNode(Node):
         if msg.data:
             self.get_logger().info("Next challenge requested")
             self.select_and_speak_challenge()
+    
+    def speak_game_feedback(self, msg):
+        if msg.data:
+            info_data = msg.data
+            threading.Thread(target=self.speak_text, args=(info_data,)).start()
     
     def select_and_speak_challenge(self):
         challenge = self.select_challenge()
