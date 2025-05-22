@@ -64,7 +64,9 @@ private:
         if (get_current_time() > challenge_timeout_)
         {
             RCLCPP_INFO(this->get_logger(), "Challenge timed out");
-            handle_failed_challenge(" ¡Tiempo agotado! Vamos a intentar con otro desafío.");
+            int random_index = rand() % defeat_texts_.size();
+            std::string defeat_text = defeat_texts_[random_index];
+            handle_failed_challenge(defeat_text);
         }
     }
     
@@ -106,8 +108,9 @@ private:
                     "Challenge completed successfully! Score: %d", score_);
         
         auto feedback_msg = std::make_unique<std_msgs::msg::String>();
-        feedback_msg->data = " ¡Muy bien! Has completado el desafío. Tu puntuación es " + 
-                           std::to_string(score_) + ".";
+        int random_index = rand() % victory_texts_.size();
+        std::string victory_text = victory_texts_[random_index];
+        feedback_msg->data = victory_text + std::to_string(score_) + ".";
         feedback_publisher_->publish(std::move(feedback_msg));
         
         std::this_thread::sleep_for(std::chrono::seconds(2));
@@ -149,6 +152,23 @@ private:
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr audio_status_subscription_;
     
     rclcpp::TimerBase::SharedPtr challenge_timer_;
+
+    std::vector<std::string> victory_texts_ = {
+        " ¡Muy bien! Has completado el desafío. Tu puntuación es "
+        " Increíble, has superado el desafío. Tu puntaje actual es ",
+        " ¡Fantástico! Has logrado el desafío. Tu puntuación es ",
+        " Que bien lo hiciste! Has completado el desafío. Tu puntuación es ",
+        " Eres el mejor jugador del mundo en este juego, sigue asi! Tu puntuación es ",
+        " ¡Impresionante! Has superado el desafío. Tu puntuación es ",
+    };
+
+    std::vector<std::string> defeat_texts_ = {
+        " ¡Oh no! Has fallado el desafío, no te preocupes, puedes intentarlo de nuevo.",
+        " Desafortunadamente, no has logrado el desafío, se que a la próxima lo harás mejor.",
+        " No te preocupes, puedes intentarlo de nuevo, nadie te quitara tu puesto de campeon."
+        " No te desanimes, sigue practicando, la practica hace al maestro.",
+        " ¡No te rindas! Puedes hacerlo mejor, todos fallamos alguna vez.",
+    };
     
     int current_challenge_;
     int score_;
